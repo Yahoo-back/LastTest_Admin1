@@ -153,6 +153,38 @@ export async function getArticleDetail(params) {
   });
 }
 
+// 资讯
+export async function queryNews(params) {
+  return request(`/api/getNewsListAdmin?${stringify(params)}`);
+}
+
+export async function addNews(params) {
+  return request('/api/addNews', {
+    method: 'POST',
+    body: params,
+  });
+}
+export async function delNews(params) {
+  return request('/api/delNews', {
+    method: 'POST',
+    body: params,
+  });
+}
+
+export async function updateNews(params) {
+  return request('/api/updateNews', {
+    method: 'POST',
+    body: params,
+  });
+}
+
+export async function getNewsDetail(params) {
+  return request('/api/getNewsDetail', {
+    method: 'POST',
+    body: params,
+  });
+}
+
 
 // 时间轴
 export async function queryTimeAxis(params) {

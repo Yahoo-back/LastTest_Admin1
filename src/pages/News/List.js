@@ -23,8 +23,8 @@ const FormItem = Form.Item;
 const Search = Input.Search;
 
 /* eslint react/no-multi-comp:0 */
-@connect(({ article }) => ({
-  article,
+@connect(({ news }) => ({
+  news,
 }))
 @Form.create()
 class TableList extends PureComponent {
@@ -208,7 +208,7 @@ class TableList extends PureComponent {
 
   handleSubmit() {
     const { dispatch } = this.props;
-    const { articleDetail } = this.props.article;
+    const { newsDetail } = this.props.news;
     if (!this.state.title) {
       notification.error({
         message: '文章标题不能为空',
@@ -240,7 +240,7 @@ class TableList extends PureComponent {
     }
     if (this.state.changeType) {
       const params = {
-        id: articleDetail._id,
+        id: newsDetail._id,
         title: this.state.title,
         author: this.state.author,
         desc: this.state.desc,
@@ -255,7 +255,7 @@ class TableList extends PureComponent {
       };
       new Promise(resolve => {
         dispatch({
-          type: 'article/updateArticle',
+          type: 'news/updateNews',
           payload: {
             resolve,
             params,
@@ -306,7 +306,7 @@ class TableList extends PureComponent {
       };
       new Promise(resolve => {
         dispatch({
-          type: 'article/addArticle',
+          type: 'news/addNews',
           payload: {
             resolve,
             params,
@@ -441,7 +441,7 @@ class TableList extends PureComponent {
       };
       new Promise(resolve => {
         dispatch({
-          type: 'article/getArticleDetail',
+          type: 'news/getNewsDetail',
           payload: {
             resolve,
             params,
@@ -532,7 +532,7 @@ class TableList extends PureComponent {
     };
     new Promise(resolve => {
       dispatch({
-        type: 'article/queryArticle',
+        type: 'news/queryNews',
         payload: {
           resolve,
           params,
@@ -561,7 +561,7 @@ class TableList extends PureComponent {
     };
     new Promise(resolve => {
       dispatch({
-        type: 'article/delArticle',
+        type: 'news/delNews',
         payload: {
           resolve,
           params,
@@ -626,7 +626,7 @@ class TableList extends PureComponent {
   }
 
   render() {
-    const { articleList, total } = this.props.article;
+    const { newsList, total } = this.props.news;
     const { pageNum, pageSize } = this.state;
     const pagination = {
       total,
@@ -653,7 +653,7 @@ class TableList extends PureComponent {
               pagination={pagination}
               rowKey={record => record._id}
               columns={this.state.columns}
-              dataSource={articleList}
+              dataSource={newsList}
               scroll={{ x: 1500, y: 500 }}
             />
           </div>

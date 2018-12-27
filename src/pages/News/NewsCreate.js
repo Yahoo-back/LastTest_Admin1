@@ -9,8 +9,8 @@ import highlight from 'highlight.js';
 import 'simplemde/dist/simplemde.min.css';
 import './style.less';
 
-@connect(({ article, tag, category }) => ({
-	article,
+@connect(({ news, tag, category }) => ({
+	news,
 	tag,
 	category,
 }))
@@ -79,7 +79,7 @@ class NewsCreate extends React.Component {
 
 	handleSubmit() {
 		const { dispatch } = this.props;
-		const { articleDetail } = this.props.article;
+		const { newsDetail } = this.props.news;
 		if(!this.state.title){
 			notification.error({
 				message: "文章标题不能为空",
@@ -108,7 +108,7 @@ class NewsCreate extends React.Component {
 		// 修改
 		if (this.state.changeType) {
 			const params = {
-				id: articleDetail._id,
+				id: newsDetail._id,
 				title: this.state.title,
 				author: this.state.author,
 				desc: this.state.desc,
@@ -123,7 +123,7 @@ class NewsCreate extends React.Component {
 			};
 			new Promise(resolve => {
 				dispatch({
-					type: 'article/updateArticle',
+					type: 'news/updateNews',
 					payload: {
 						resolve,
 						params,
@@ -175,7 +175,7 @@ class NewsCreate extends React.Component {
 			};
 			new Promise(resolve => {
 				dispatch({
-					type: 'article/addArticle',
+					type: 'news/addNews',
 					payload: {
 						resolve,
 						params,

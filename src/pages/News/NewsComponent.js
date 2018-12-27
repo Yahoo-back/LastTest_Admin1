@@ -2,8 +2,8 @@ import React from 'react';
 import { Input, Modal, Select, notification } from 'antd';
 import { connect } from 'dva';
 
-@connect(({ article, tag, category }) => ({
-  article,
+@connect(({ news, tag, category }) => ({
+  news,
   tag,
   category,
 }))
@@ -110,7 +110,7 @@ class NewsComponent extends React.Component {
         </Select.Option>
       );
     }
-    const { articleDetail } = this.props.article;
+    const { newsDetail } = this.props.news;
     const { changeType } = this.props;
     let originDefault = '原创';
     let stateDefault = '发布'; // 文章发布状态 => 0 草稿，1 发布
@@ -118,10 +118,10 @@ class NewsComponent extends React.Component {
     let categoryDefault = [];
     let tagsDefault = [];
     if (changeType) {
-      originDefault = articleDetail.origin === 0 ? '原创' : '';
-      stateDefault = articleDetail.state ? '已发布' : '草稿';
+      originDefault = newsDetail.origin === 0 ? '原创' : '';
+      stateDefault = newsDetail.state ? '已发布' : '草稿';
       typeDefault =
-        articleDetail.type === 1 ? '普通文章' : articleDetail.type === 2 ? '简历' : '管理员介绍';
+        newsDetail.type === 1 ? '普通文章' : newsDetail.type === 2 ? '简历' : '管理员介绍';
       categoryDefault = this.props.categoryDefault;
       tagsDefault = this.props.tagsDefault;
     } else {
@@ -142,7 +142,7 @@ class NewsComponent extends React.Component {
     return (
       <div>
         <Modal
-          title="添加与修改文章"
+          title="添加与修改资讯"
           visible={this.props.visible}
           onOk={this.props.handleOk}
           width="1200px"
