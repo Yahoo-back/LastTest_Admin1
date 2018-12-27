@@ -204,17 +204,19 @@ class NewsComponent extends React.Component {
             <Select.Option value="1">发布</Select.Option>
           </Select>
 
-          <Select
-            style={{ width: 200, marginTop: 20, marginBottom: 20 }}
-            placeholder="选择文章类型"
-            defaultValue={typeDefault}
-            onChange={this.props.handleChangeType}
-          >
-            {/* 文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍 */}
-            <Select.Option value="1">普通文章</Select.Option>
-            <Select.Option value="2">简历</Select.Option>
-            <Select.Option value="3">管理员介绍</Select.Option>
-          </Select>
+          {
+            // <Select
+            //   style={{ width: 200, marginTop: 20, marginBottom: 20 }}
+            //   placeholder="选择文章类型"
+            //   defaultValue={typeDefault}
+            //   onChange={this.props.handleChangeType}
+            // >
+            //   {/* 文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍 */}
+            //   <Select.Option value="1">普通文章</Select.Option>
+            //   <Select.Option value="2">简历</Select.Option>
+            //   <Select.Option value="3">管理员介绍</Select.Option>
+            // </Select>
+          }
 
           <Select
             style={{ width: 200, marginTop: 20, marginLeft: 10, marginBottom: 20 }}
