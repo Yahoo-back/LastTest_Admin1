@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Modal } from 'antd';
 
-class TagComponent extends React.Component {
+class NewsTagComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -46,4 +46,4 @@ class TagComponent extends React.Component {
   }
 }
 
-export default TagComponent;
+export default NewsTagComponent;

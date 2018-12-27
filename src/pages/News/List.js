@@ -41,10 +41,10 @@ class TableList extends PureComponent {
       origin: 0, // 0 原创，1 转载，2 混合
       state: 1, // 文章发布状态 => 0 草稿，1 已发布
       type: 1, // 文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍
-      tags: '',
-      category: '',
-      tagsDefault: [],
-      categoryDefault: [],
+      newsTag: '',
+      // category: '',
+      newsTagDefault: [],
+      // categoryDefault: [],
       searchState: '', // 文章发布状态 => 0 草稿，1 已发布,'' 代表所有文章
       searchKeyword: '',
       visible: false,
@@ -85,7 +85,7 @@ class TableList extends PureComponent {
         },
         {
           title: '标签',
-          dataIndex: 'tags',
+          dataIndex: 'newsTag',
           width: 120,
           render: arr => (
             <span>
@@ -97,20 +97,20 @@ class TableList extends PureComponent {
             </span>
           ),
         },
-        {
-          title: '分类',
-          width: 120,
-          dataIndex: 'category',
-          render: arr => (
-            <span>
-              {arr.map(item => (
-                <Tag color="blue" key={item.id}>
-                  {item.name}
-                </Tag>
-              ))}
-            </span>
-          ),
-        },
+        // {
+        //   title: '分类',
+        //   width: 120,
+        //   dataIndex: 'category',
+        //   render: arr => (
+        //     <span>
+        //       {arr.map(item => (
+        //         <Tag color="blue" key={item.id}>
+        //           {item.name}
+        //         </Tag>
+        //       ))}
+        //     </span>
+        //   ),
+        // },
         {
           title: '状态',
           dataIndex: 'state',
@@ -132,7 +132,7 @@ class TableList extends PureComponent {
           render: val => (
             <div>
               {' '}
-              <span>观看：{val.views}</span> <span>点赞：{val.likes}</span> <span>评论：{val.comments}</span>{' '}
+              <span>观看：{val.views}</span> <span>点赞：{val.likes}</span> {' '}
             </div>
           ),
         },
@@ -169,7 +169,7 @@ class TableList extends PureComponent {
               </Fragment>
               <Divider type="vertical" />
               <Popconfirm
-                title="确定要删除该菜谱吗?"
+                title="确定要删除该资讯吗?"
                 onConfirm={() => this.handleDelete(text, record)}
               >
                 <a href="javascript:;">删除</a>
@@ -194,12 +194,12 @@ class TableList extends PureComponent {
     this.handleChangeState = this.handleChangeState.bind(this);
     this.handleChangeType = this.handleChangeType.bind(this);
     this.handleChangeOrigin = this.handleChangeOrigin.bind(this);
-    this.handleTagChange = this.handleTagChange.bind(this);
+    this.handleNewsTagChange = this.handleNewsTagChange.bind(this);
     this.handleChangeAuthor = this.handleChangeAuthor.bind(this);
     this.handleChangeKeyword = this.handleChangeKeyword.bind(this);
     this.handleChangeDesc = this.handleChangeDesc.bind(this);
     this.handleChangeImgUrl = this.handleChangeImgUrl.bind(this);
-    this.handleCategoryChange = this.handleCategoryChange.bind(this);
+    // this.handleCategoryChange = this.handleCategoryChange.bind(this);
   }
 
   componentDidMount() {
@@ -211,19 +211,19 @@ class TableList extends PureComponent {
     const { newsDetail } = this.props.news;
     if (!this.state.title) {
       notification.error({
-        message: '文章标题不能为空',
+        message: '资讯标题不能为空',
       });
       return;
     }
     if (!this.state.keyword) {
       notification.error({
-        message: '文章关键字不能为空',
+        message: '资讯关键字不能为空',
       });
       return;
     }
     if (!this.state.content) {
       notification.error({
-        message: '文章内容不能为空',
+        message: '资讯内容不能为空',
       });
       return;
     }
@@ -250,8 +250,8 @@ class TableList extends PureComponent {
         origin: this.state.origin,
         state: this.state.state,
         type: this.state.type,
-        tags: this.state.tags,
-        category: this.state.category,
+        newsTag: this.state.newsTag,
+        // category: this.state.category,
       };
       new Promise(resolve => {
         dispatch({
@@ -278,10 +278,10 @@ class TableList extends PureComponent {
             origin: 0, // 0 原创，1 转载，2 混合
             state: 1, // 文章发布状态 => 0 草稿，1 已发布
             type: 1, // 文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍
-            tags: '',
-            category: '',
-            tagsDefault: [],
-            categoryDefault: [],
+            newsTag: '',
+            // category: '',
+            newsTagDefault: [],
+            // categoryDefault: [],
           });
           this.handleSearch(this.state.pageNum, this.state.pageSize);
         } else {
@@ -301,8 +301,8 @@ class TableList extends PureComponent {
         origin: this.state.origin,
         state: this.state.state,
         type: this.state.type,
-        tags: this.state.tags,
-        category: this.state.category,
+        newsTag: this.state.newsTag,
+        // category: this.state.category,
       };
       new Promise(resolve => {
         dispatch({
@@ -319,7 +319,7 @@ class TableList extends PureComponent {
           });
           this.setState({
             visible: false,
-            chnageType: false,
+            changeType: false,
           });
           this.handleSearch(this.state.pageNum, this.state.pageSize);
         } else {
@@ -380,23 +380,23 @@ class TableList extends PureComponent {
     });
   }
 
-  handleTagChange(value) {
-    const tags = value.join();
-    console.log('tags :', tags);
+  handleNewsTagChange(value) {
+    const newsTag = value.join();
+    console.log('newsTag :', newsTag);
     this.setState({
-      tagsDefault: value,
-      tags,
+      newsTagDefault: value,
+      newsTag,
     });
   }
 
-  handleCategoryChange(value) {
-    const category = value.join();
-    console.log('category :', category);
-    this.setState({
-      categoryDefault: value,
-      category,
-    });
-  }
+  // handleCategoryChange(value) {
+  //   const category = value.join();
+  //   console.log('category :', category);
+  //   this.setState({
+  //     categoryDefault: value,
+  //     category,
+  //   });
+  // }
 
   handleChangeState(value) {
     this.setState({
@@ -449,24 +449,24 @@ class TableList extends PureComponent {
         });
       }).then(res => {
         // console.log('res :', res)
-        const tagsArr = [];
-        if (res.data.tags.length) {
-          for (let i = 0; i < res.data.tags.length; i++) {
-            const e = res.data.tags[i];
-            tagsArr.push(e._id);
+        const newsTagArr = [];
+        if (res.data.newsTag.length) {
+          for (let i = 0; i < res.data.newsTag.length; i++) {
+            const e = res.data.newsTag[i];
+            newsTagArr.push(e._id);
           }
         }
-        const tags = tagsArr.length ? tagsArr.join() : '';
-        const categoryArr = [];
-        if (res.data.category.length) {
-          for (let i = 0; i < res.data.category.length; i++) {
-            const e = res.data.category[i];
-            categoryArr.push(e._id);
-          }
-        }
-        const category = categoryArr.length ? categoryArr.join() : '';
-        console.log('tagsArr :', tagsArr);
-        console.log('categoryArr :', categoryArr);
+        const newsTag = newsTagArr.length ? newsTagArr.join() : '';
+        // const categoryArr = [];
+        // if (res.data.category.length) {
+        //   for (let i = 0; i < res.data.category.length; i++) {
+        //     const e = res.data.category[i];
+        //     categoryArr.push(e._id);
+        //   }
+        // }
+        // const category = categoryArr.length ? categoryArr.join() : '';
+        console.log('newsTagArr :', newsTagArr);
+        // console.log('categoryArr :', categoryArr);
         if (res.code === 0) {
           this.setState({
             visible: true,
@@ -479,10 +479,10 @@ class TableList extends PureComponent {
             desc: res.data.desc,
             img_url: res.data.img_url,
             origin: res.data.origin, // 0 原创，1 转载，2 混合
-            tags,
-            category,
-            tagsDefault: tagsArr,
-            categoryDefault: categoryArr,
+            newsTag,
+            // category,
+            newsTagDefault: newsTagArr,
+            // categoryDefault: categoryArr,
           });
         } else {
           notification.error({
@@ -503,8 +503,8 @@ class TableList extends PureComponent {
         origin: 0, // 0 原创，1 转载，2 混合
         state: 1, // 文章发布状态 => 0 草稿，1 已发布
         type: 1, // 文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍
-        tags: '',
-        category: '',
+        newsTag: '',
+        // category: '',
       });
     }
   };
@@ -671,8 +671,8 @@ class TableList extends PureComponent {
           desc={this.state.desc}
           img_url={this.state.img_url}
           visible={this.state.visible}
-          tagsDefault={this.state.tagsDefault}
-          categoryDefault={this.state.categoryDefault}
+          newsTagDefault={this.state.newsTagDefault}
+          // categoryDefault={this.state.categoryDefault}
           handleOk={this.handleOk}
           handleCancel={this.handleCancel}
           handleChange={this.handleChange}
@@ -683,8 +683,8 @@ class TableList extends PureComponent {
           handleChangeKeyword={this.handleChangeKeyword}
           handleChangeDesc={this.handleChangeDesc}
           handleChangeImgUrl={this.handleChangeImgUrl}
-          handleCategoryChange={this.handleCategoryChange}
-          handleTagChange={this.handleTagChange}
+          // handleCategoryChange={this.handleCategoryChange}
+          handleNewsTagChange={this.handleNewsTagChange}
           handleChangeType={this.handleChangeType}
         />
       </PageHeaderWrapper>

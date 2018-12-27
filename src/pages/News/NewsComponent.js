@@ -2,10 +2,9 @@ import React from 'react';
 import { Input, Modal, Select, notification } from 'antd';
 import { connect } from 'dva';
 
-@connect(({ news, tag, category }) => ({
+@connect(({ news, newsTag }) => ({
   news,
-  tag,
-  category,
+  newsTag,
 }))
 class NewsComponent extends React.Component {
   constructor(props) {
@@ -16,16 +15,16 @@ class NewsComponent extends React.Component {
       pageNum: 1,
       pageSize: 50,
     };
-    this.handleSearchTag = this.handleSearchTag.bind(this);
-    this.handleSearchCategory = this.handleSearchCategory.bind(this);
+    this.handleSearchNewsTag = this.handleSearchNewsTag.bind(this);
+    // this.handleSearchCategory = this.handleSearchCategory.bind(this);
   }
 
   componentDidMount() {
-    this.handleSearchTag();
-    this.handleSearchCategory();
+    this.handleSearchNewsTag();
+    // this.handleSearchCategory();
   }
 
-  handleSearchTag = () => {
+  handleSearchNewsTag = () => {
     this.setState({
       loading: true,
     });
@@ -37,7 +36,7 @@ class NewsComponent extends React.Component {
     };
     new Promise(resolve => {
       dispatch({
-        type: 'tag/queryTag',
+        type: 'newsTag/queryNewsTag',
         payload: {
           resolve,
           params,
@@ -57,78 +56,78 @@ class NewsComponent extends React.Component {
     });
   };
 
-  handleSearchCategory = () => {
-    this.setState({
-      loading: true,
-    });
-    const { dispatch } = this.props;
-    const params = {
-      keyword: this.state.keyword,
-      pageNum: this.state.pageNum,
-      pageSize: this.state.pageSize,
-    };
-    new Promise(resolve => {
-      dispatch({
-        type: 'category/queryCategory',
-        payload: {
-          resolve,
-          params,
-        },
-      });
-    }).then(res => {
-      // console.log('res :', res);
-      if (res.code === 0) {
-        this.setState({
-          loading: false,
-        });
-      } else {
-        notification.error({
-          message: res.message,
-        });
-      }
-    });
-  };
+  // handleSearchCategory = () => {
+  //   this.setState({
+  //     loading: true,
+  //   });
+  //   const { dispatch } = this.props;
+  //   const params = {
+  //     keyword: this.state.keyword,
+  //     pageNum: this.state.pageNum,
+  //     pageSize: this.state.pageSize,
+  //   };
+  //   new Promise(resolve => {
+  //     dispatch({
+  //       type: 'category/queryCategory',
+  //       payload: {
+  //         resolve,
+  //         params,
+  //       },
+  //     });
+  //   }).then(res => {
+  //     // console.log('res :', res);
+  //     if (res.code === 0) {
+  //       this.setState({
+  //         loading: false,
+  //       });
+  //     } else {
+  //       notification.error({
+  //         message: res.message,
+  //       });
+  //     }
+  //   });
+  // };
 
   render() {
-    const { tagList } = this.props.tag;
-    const { categoryList } = this.props.category;
+    const { newsTagList } = this.props.newsTag;
+    // const { categoryList } = this.props.category;
     const children = [];
-    const categoryChildren = [];
-    for (let i = 0; i < tagList.length; i++) {
-      const e = tagList[i];
+    // const categoryChildren = [];
+    for (let i = 0; i < newsTagList.length; i++) {
+      const e = newsTagList[i];
       children.push(
         <Select.Option key={e._id} value={e._id}>
           {e.name}
         </Select.Option>
       );
     }
-    for (let i = 0; i < categoryList.length; i++) {
-      const e = categoryList[i];
-      categoryChildren.push(
-        <Select.Option key={e._id} value={e._id}>
-          {e.name}
-        </Select.Option>
-      );
-    }
+    // for (let i = 0; i < categoryList.length; i++) {
+    //   const e = categoryList[i];
+    //   categoryChildren.push(
+    //     <Select.Option key={e._id} value={e._id}>
+    //       {e.name}
+    //     </Select.Option>
+    //   );
+    // }
     const { newsDetail } = this.props.news;
     const { changeType } = this.props;
     let originDefault = '原创';
     let stateDefault = '发布'; // 文章发布状态 => 0 草稿，1 发布
     let typeDefault = '普通文章'; // 文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍
-    let categoryDefault = [];
-    let tagsDefault = [];
+    // let categoryDefault = [];
+    let newsTagDefault = [];
     if (changeType) {
       originDefault = newsDetail.origin === 0 ? '原创' : '';
       stateDefault = newsDetail.state ? '已发布' : '草稿';
       typeDefault =
         newsDetail.type === 1 ? '普通文章' : newsDetail.type === 2 ? '简历' : '管理员介绍';
-      categoryDefault = this.props.categoryDefault;
-      tagsDefault = this.props.tagsDefault;
+      // categoryDefault = this.props.categoryDefault;
+      newsTagDefault = this.props.newsTagDefault;
     } else {
       originDefault = '原创';
       stateDefault = '发布'; // 文章发布状态 => 0 草稿，1 发布
-      categoryDefault = [];
-      tagsDefault = [];
+      // categoryDefault = [];
+      newsTagDefault = [];
     }
     // console.log('originDefault :', originDefault)
     // console.log('stateDefault :', stateDefault)
@@ -145,7 +144,7 @@ class NewsComponent extends React.Component {
           title="添加与修改资讯"
           visible={this.props.visible}
           onOk={this.props.handleOk}
-          width="1200px"
+          width="800px"
           onCancel={this.props.handleCancel}
         >
           <Input
@@ -234,23 +233,25 @@ class NewsComponent extends React.Component {
             mode="multiple"
             style={{ width: 200, marginTop: 20, marginLeft: 10, marginBottom: 20 }}
             placeholder="标签"
-            defaultValue={tagsDefault}
-            value={this.props.tagsDefault}
-            onChange={this.props.handleTagChange}
+            defaultValue={newsTagDefault}
+            value={this.props.newsTagDefault}
+            onChange={this.props.handleNewsTagChange}
           >
             {children}
           </Select>
-          <Select
-            allowClear
-            mode="multiple"
-            style={{ width: 200, marginTop: 20, marginLeft: 10, marginBottom: 20 }}
-            placeholder="文章分类"
-            defaultValue={categoryDefault}
-            value={this.props.categoryDefault}
-            onChange={this.props.handleCategoryChange}
-          >
-            {categoryChildren}
-          </Select>
+          {
+            //   <Select
+            //   allowClear
+            //   mode="multiple"
+            //   style={{ width: 200, marginTop: 20, marginLeft: 10, marginBottom: 20 }}
+            //   placeholder="文章分类"
+            //   defaultValue={categoryDefault}
+            //   value={this.props.categoryDefault}
+            //   onChange={this.props.handleCategoryChange}
+            // >
+            //   {categoryChildren}
+            // </Select>
+          }
           <TextArea
             style={{ marginBottom: 20 }}
             size="large"

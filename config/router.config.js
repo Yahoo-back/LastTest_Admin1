@@ -58,6 +58,7 @@ export default [
           },
         ],
       },
+      // 用户
       {
         path: '/otherUser',
         name: 'otherUser',
@@ -70,6 +71,7 @@ export default [
           },
         ],
       },
+      // 菜谱
       {
         path: '/article',
         name: 'article',
@@ -87,35 +89,7 @@ export default [
           },
         ],
       },
-      {
-        path: '/News',
-        name: 'News',
-        icon: 'pushpin',
-        routes: [
-          {
-            path: '/News/list',
-            name: 'list',
-            component: './News/List',
-          },
-          {
-            path: '/News/create',
-            name: 'create',
-            component: './News/NewsCreate',
-          },
-        ],
-      },
-      {
-        path: '/message',
-        name: 'message',
-        icon: 'message',
-        routes: [
-          {
-            path: '/message/list',
-            name: 'list',
-            component: './Message/List',
-          },
-        ],
-      },
+      // 菜谱标签
       {
         path: '/tag',
         name: 'tag',
@@ -128,18 +102,7 @@ export default [
           },
         ],
       },
-      {
-        path: '/link',
-        name: 'link',
-        icon: 'link',
-        routes: [
-          {
-            path: '/link/list',
-            name: 'list',
-            component: './Link/List',
-          },
-        ],
-      },
+      // 菜谱分类
       {
         path: '/category',
         name: 'category',
@@ -152,47 +115,105 @@ export default [
           },
         ],
       },
+      // 资讯
       {
-        path: '/timeAxis',
-        name: 'timeAxis',
-        icon: 'clock-circle',
+        path: '/news',
+        name: 'news',
+        icon: 'pushpin',
         routes: [
           {
-            path: '/timeAxis/list',
+            path: '/news/list',
             name: 'list',
-            component: './TimeAxis/List',
+            component: './News/List',
+          },
+          {
+            path: '/news/create',
+            name: 'create',
+            component: './News/NewsCreate',
           },
         ],
       },
+      // 资讯标签
       {
-        name: 'exception',
-        icon: 'warning',
-        path: '/exception',
+        path: '/newsTag',
+        name: 'newsTag',
+        icon: 'tags',
         routes: [
-          // exception
           {
-            path: '/exception/403',
-            name: 'not-permission',
-            component: './Exception/403',
-          },
-          {
-            path: '/exception/404',
-            name: 'not-find',
-            component: './Exception/404',
-          },
-          {
-            path: '/exception/500',
-            name: 'server-error',
-            component: './Exception/500',
-          },
-          {
-            path: '/exception/trigger',
-            name: 'trigger',
-            hideInMenu: true,
-            component: './Exception/TriggerException',
+            path: '/newsTag/list',
+            name: 'list',
+            component: './NewsTag/List',
           },
         ],
       },
+      // 留言
+      {
+        path: '/message',
+        name: 'message',
+        icon: 'message',
+        routes: [
+          {
+            path: '/message/list',
+            name: 'list',
+            component: './Message/List',
+          },
+        ],
+      },
+
+      // {
+      //   path: '/link',
+      //   name: 'link',
+      //   icon: 'link',
+      //   routes: [
+      //     {
+      //       path: '/link/list',
+      //       name: 'list',
+      //       component: './Link/List',
+      //     },
+      //   ],
+      // },
+
+      // {
+      //   path: '/timeAxis',
+      //   name: 'timeAxis',
+      //   icon: 'clock-circle',
+      //   routes: [
+      //     {
+      //       path: '/timeAxis/list',
+      //       name: 'list',
+      //       component: './TimeAxis/List',
+      //     },
+      //   ],
+      // },
+      // {
+      //   name: 'exception',
+      //   icon: 'warning',
+      //   path: '/exception',
+      //   routes: [
+      //     // exception
+      //     {
+      //       path: '/exception/403',
+      //       name: 'not-permission',
+      //       component: './Exception/403',
+      //     },
+      //     {
+      //       path: '/exception/404',
+      //       name: 'not-find',
+      //       component: './Exception/404',
+      //     },
+      //     {
+      //       path: '/exception/500',
+      //       name: 'server-error',
+      //       component: './Exception/500',
+      //     },
+      //     {
+      //       path: '/exception/trigger',
+      //       name: 'trigger',
+      //       hideInMenu: true,
+      //       component: './Exception/TriggerException',
+      //     },
+      //   ],
+      // },
       {
         name: 'account',
         icon: 'user',

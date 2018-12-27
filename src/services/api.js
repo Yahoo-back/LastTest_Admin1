@@ -120,7 +120,6 @@ export async function addReplyMessage(params) {
   });
 }
 
-
 // 文章
 export async function queryArticle(params) {
   return request(`/api/getArticleListAdmin?${stringify(params)}`);
@@ -185,7 +184,6 @@ export async function getNewsDetail(params) {
   });
 }
 
-
 // 时间轴
 export async function queryTimeAxis(params) {
   return request(`/api/getTimeAxisList?${stringify(params)}`);
@@ -218,7 +216,6 @@ export async function getTimeAxisDetail(params) {
   });
 }
 
-
 // 标签
 export async function queryTag(params) {
   return request(`/api/getTagList?${stringify(params)}`);
@@ -238,6 +235,24 @@ export async function delTag(params) {
   });
 }
 
+// 资讯标签
+export async function queryNewsTag(params) {
+  return request(`/api/getNewsTagList?${stringify(params)}`);
+}
+
+export async function addNewsTag(params) {
+  return request('/api/addNewsTag', {
+    method: 'POST',
+    body: params,
+  });
+}
+
+export async function delNewsTag(params) {
+  return request('/api/delNewsTag', {
+    method: 'POST',
+    body: params,
+  });
+}
 
 export async function queryBasicProfile() {
   return request('/api/profile/basic');

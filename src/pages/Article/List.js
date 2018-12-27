@@ -33,7 +33,7 @@ class TableList extends PureComponent {
     this.state = {
       changeType: false,
       title: '',
-      author: 'biaochenxuying',
+      author: '',
       keyword: '',
       content: '',
       desc: '',
@@ -281,7 +281,7 @@ class TableList extends PureComponent {
             visible: false,
             changeType: false,
             title: '',
-            author: 'biaochenxuying',
+            author: '',
             keyword: '',
             content: '',
             desc: '',
@@ -330,7 +330,7 @@ class TableList extends PureComponent {
           });
           this.setState({
             visible: false,
-            chnageType: false,
+            changeType: false,
           });
           this.handleSearch(this.state.pageNum, this.state.pageSize);
         } else {
@@ -506,7 +506,7 @@ class TableList extends PureComponent {
         visible: true,
         changeType: false,
         title: '',
-        author: 'biaochenxuying',
+        author: '',
         keyword: '',
         content: '',
         desc: '',
