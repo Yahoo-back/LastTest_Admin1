@@ -107,6 +107,8 @@ export default {
   'app.settings.menuMap.notification': '新消息通知',
   'app.settings.menuMap.personalLink': '个人链接',
   'app.settings.basic.avatar': '更换头像',
+  'app.settings.basic.password': '密码',
+  'app.settings.basic.password-message': '请输入您的密码!',
   'app.settings.basic.email': '邮箱',
   'app.settings.basic.email-message': '请输入您的邮箱!',
   'app.settings.basic.nickname': '昵称',

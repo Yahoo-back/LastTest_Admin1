@@ -87,8 +87,28 @@ class BaseView extends Component {
                 ],
               })(<Input />)}
             </FormItem>
+            <FormItem label={formatMessage({ id: 'app.settings.basic.password' })}>
+              {getFieldDecorator('password', {
+                rules: [
+                  {
+                    required: true,
+                    message: formatMessage({ id: 'app.settings.basic.password-message' }, {}),
+                  },
+                ],
+              })(<Input />)}
+            </FormItem>
+            <FormItem label={formatMessage({ id: 'app.settings.basic.phone' })}>
+              {getFieldDecorator('phone', {
+                rules: [
+                  {
+                    required: true,
+                    message: formatMessage({ id: 'app.settings.basic.phone-message' }, {}),
+                  },
+                ],
+              })(<Input />)}
+            </FormItem>
             <FormItem label={formatMessage({ id: 'app.settings.basic.profile' })}>
-              {getFieldDecorator('profile', {
+              {getFieldDecorator('introduce', {
                 rules: [
                   {
                     required: true,

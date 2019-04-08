@@ -197,6 +197,8 @@ export default {
   'app.settings.menuMap.personalLink': 'personal link',
   'app.settings.basic.avatar': 'Change avatar',
   'app.settings.basic.email': 'Email',
+  'app.settings.basic.password': 'Password',
+  'app.settings.basic.phone': 'Phone',
   'app.settings.basic.email-message': 'Please input your email!',
   'app.settings.basic.nickname': 'Nickname',
   'app.settings.basic.nickname-message': 'Please input your Nickname!',

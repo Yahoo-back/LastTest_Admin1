@@ -129,6 +129,8 @@ export default {
   'app.settings.menuMap.notification': 'Mensagens de Notificação',
   'app.settings.basic.avatar': 'Alterar avatar',
   'app.settings.basic.email': 'Email',
+  'app.settings.basic.password': 'Password',
+  'app.settings.basic.phone': 'Phone',
   'app.settings.basic.email-message': 'Por favor insira seu email!',
   'app.settings.basic.nickname': 'Nome de usuário',
   'app.settings.basic.nickname-message': 'Por favor insira seu nome de usuário!',
