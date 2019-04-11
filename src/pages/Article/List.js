@@ -97,20 +97,20 @@ class TableList extends PureComponent {
             </span>
           ),
         },
-        {
-          title: '分类',
-          width: 120,
-          dataIndex: 'category',
-          render: arr => (
-            <span>
-              {arr.map(item => (
-                <Tag color="blue" key={item.id}>
-                  {item.name}
-                </Tag>
-              ))}
-            </span>
-          ),
-        },
+        // {
+        //   title: '分类',
+        //   width: 120,
+        //   dataIndex: 'category',
+        //   render: arr => (
+        //     <span>
+        //       {arr.map(item => (
+        //         <Tag color="blue" key={item.id}>
+        //           {item.name}
+        //         </Tag>
+        //       ))}
+        //     </span>
+        //   ),
+        // },
         {
           title: '状态',
           dataIndex: 'state',
@@ -683,7 +683,7 @@ class TableList extends PureComponent {
           img_url={this.state.img_url}
           visible={this.state.visible}
           tagsDefault={this.state.tagsDefault}
-          categoryDefault={this.state.categoryDefault}
+          // categoryDefault={this.state.categoryDefault}
           handleOk={this.handleOk}
           handleCancel={this.handleCancel}
           handleChange={this.handleChange}

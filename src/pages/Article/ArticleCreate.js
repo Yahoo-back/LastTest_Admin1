@@ -529,22 +529,23 @@ class ArticleCreate extends React.Component {
           <Select.Option value="0">草稿</Select.Option>
           <Select.Option value="1">发布</Select.Option>
         </Select>
+        {
+          // <Select
+          //   style={{ width: 180, marginLeft: 10, marginBottom: 20 }}
+          //   placeholder="选择菜谱类型"
+          //   defaultValue={typeDefault}
+          //   onChange={this.handleChangeType}
+          // >
+          //   {/* 文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍 */}
+          //   <Select.Option value="1">普通文章</Select.Option>
+          //   <Select.Option value="2">简历</Select.Option>
+          //   <Select.Option value="3">管理员介绍</Select.Option>
+          // </Select>
+        }
 
         <Select
           style={{ width: 180, marginLeft: 10, marginBottom: 20 }}
-          placeholder="选择菜谱类型"
-          defaultValue={typeDefault}
-          onChange={this.handleChangeType}
-        >
-          {/* 文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍 */}
-          <Select.Option value="1">普通文章</Select.Option>
-          <Select.Option value="2">简历</Select.Option>
-          <Select.Option value="3">管理员介绍</Select.Option>
-        </Select>
-
-        <Select
-          style={{ width: 180, marginLeft: 10, marginBottom: 20 }}
-          placeholder="选择文章转载状态"
+          placeholder="选择菜谱转载状态"
           defaultValue={originDefault}
           onChange={this.handleChangeOrigin}
         >
@@ -565,17 +566,19 @@ class ArticleCreate extends React.Component {
         >
           {children}
         </Select>
-        <Select
-          allowClear
-          mode="multiple"
-          style={{ width: 180, marginLeft: 10, marginBottom: 10 }}
-          placeholder="菜谱分类"
-          defaultValue={categoryDefault}
-          value={this.state.categoryDefault}
-          onChange={this.handleCategoryChange}
-        >
-          {categoryChildren}
-        </Select>
+        {
+          // <Select
+          //   allowClear
+          //   mode="multiple"
+          //   style={{ width: 180, marginLeft: 10, marginBottom: 10 }}
+          //   placeholder="菜谱分类"
+          //   defaultValue={categoryDefault}
+          //   value={this.state.categoryDefault}
+          //   onChange={this.handleCategoryChange}
+          // >
+          //   {categoryChildren}
+          // </Select>
+        }
         <div>
           <Button
             onClick={() => {

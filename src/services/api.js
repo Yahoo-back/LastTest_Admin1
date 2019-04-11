@@ -50,6 +50,13 @@ export async function queryUser(params) {
   return request(`/api/getUserList?${stringify(params)}`);
 }
 
+export async function getUserDetail(params) {
+  return request('/api/getUserDetail', {
+    method: 'POST',
+    body: params,
+  });
+}
+
 export async function addUser(params) {
   return request('/api/addUser', {
     method: 'POST',

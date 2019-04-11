@@ -43,7 +43,11 @@ class HeaderView extends PureComponent {
   };
 
   handleNoticeClear = type => {
-    message.success(`${formatMessage({ id: 'component.noticeIcon.cleared' })} ${formatMessage({ id: `component.globalHeader.${type}` })}`);
+    message.success(
+      `${formatMessage({ id: 'component.noticeIcon.cleared' })} ${formatMessage({
+        id: `component.globalHeader.${type}`,
+      })}`
+    );
     const { dispatch } = this.props;
     dispatch({
       type: 'global/clearNotices',
@@ -62,7 +66,7 @@ class HeaderView extends PureComponent {
       return;
     }
     if (key === 'userinfo') {
-      router.push('/account/settings/base');
+      router.push('/account/settings');
       return;
     }
     if (key === 'logout') {

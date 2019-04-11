@@ -220,7 +220,7 @@ class NewsComponent extends React.Component {
 
           <Select
             style={{ width: 200, marginTop: 20, marginLeft: 10, marginBottom: 20 }}
-            placeholder="选择文章转载状态"
+            placeholder="选择资讯转载状态"
             defaultValue={originDefault}
             onChange={this.props.handleChangeOrigin}
           >
