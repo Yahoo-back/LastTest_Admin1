@@ -7,20 +7,19 @@ export default {
     messageList: [],
     total: 0,
     messageDetail: {
-      avatar: 'user',
-      content: '.....留言',
+      avatar: '',
+      content: '',
       reply_list: [],
-      create_time: '2018-11-04T12:05:10.761Z',
-      email: '13800138000',
-      id: 15,
-      introduce: 'introduce',
-      name: '虚影',
-      phone: '1380013800',
+      create_time: '',
+      email: '',
+      introduce: '',
+      name: '',
+      phone: '',
       state: 0,
-      update_time: '2018-11-04T12:05:10.761Z',
-      user_id: '5bd9a84c2758be723f5ef2cb',
+      update_time: '',
+      user_id: '',
       __v: 0,
-      _id: '5bdee076bc454f49bba03ab0',
+      _id: '',
     },
   },
 
@@ -54,8 +53,9 @@ export default {
     *getMessageDetail({ payload }, { call, put }) {
       const { resolve, params } = payload;
       const response = yield call(getMessageDetail, params);
+      
       !!resolve && resolve(response);
-      // console.log('response :', response)
+      console.log('response :', response)
       if (response.code === 0) {
         yield put({
           type: 'saveMessageDetail',

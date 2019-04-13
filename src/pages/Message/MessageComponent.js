@@ -23,6 +23,7 @@ class MessageComponent extends React.Component {
 		const { dispatch } = this.props;
 		const { messageDetail } = this.props.message;
 		const params = {
+			email: messageDetail.email,
 			id: messageDetail._id,
 			state: this.state.state,
 			content: this.state.content,
@@ -82,8 +83,9 @@ class MessageComponent extends React.Component {
 		};
 		const { TextArea } = Input;
 		const { messageDetail } = this.props.message;
+		console.log(messageDetail)
 		const list = messageDetail.reply_list.map(e => (
-  <div key={e._id} style={contentStyle}>
+  <div key={e.email} style={contentStyle}>
     {' '}
     {e.content}
   </div>

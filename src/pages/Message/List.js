@@ -123,7 +123,7 @@ class TableList extends PureComponent {
 	showReplyModal = (text, record) => {
 		const { dispatch } = this.props;
 		const params = {
-			id: record._id,
+			email: record.email,
 		};
 		new Promise(resolve => {
 			dispatch({
@@ -292,7 +292,7 @@ class TableList extends PureComponent {
           pagination={pagination}
           loading={this.state.loading}
           pagination={pagination}
-          rowKey={record => record._id}
+          rowKey={record => record.email}
           columns={this.state.columns}
           dataSource={messageList}
         />
